@@ -1,0 +1,25 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.peterod99/nynch",
+  "title": "Nynch MCP Server",
+  "description": "CRM, relationship intelligence, and multi-agent orchestration for AI agents.",
+  "repository": {
+    "url": "https://github.com/peterod99/nynch-mcp-server",
+    "source": "github"
+  },
+  "version": "1.0.0",
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://crcrwtjzqzinfzokianr.supabase.co/functions/v1/mcp-server",
+      "headers": [
+        {
+          "name": "Authorization",
+          "description": "Bearer token — use your Nynch MCP API key (create one in Settings → MCP Server)",
+          "isRequired": true,
+          "isSecret": true
+        }
+      ]
+    }
+  ]
+}
