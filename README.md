@@ -173,4 +173,4 @@ Full developer documentation: [nynch.com/developers](https://nynch.com/developer
 
 ## License
 
-This repository contains documentation and configuration for the Nynch MCP Server. The server itself is a hosted service — no local installation required.
+This repository (documentation and configuration) is released under the [MIT License](./LICENSE). The Nynch MCP Server itself is a hosted service — no local installation required.
