@@ -7,7 +7,7 @@
     "url": "https://github.com/peterod99/nynch-mcp-server",
     "source": "github"
   },
-  "version": "1.0.0",
+  "version": "3.0.0",
   "remotes": [
     {
       "type": "streamable-http",
@@ -15,7 +15,7 @@
       "headers": [
         {
           "name": "Authorization",
-          "description": "Bearer token — use your Nynch MCP API key (create one in Settings → MCP Server)",
+          "description": "Bearer token — use your Nynch MCP API key (create one in Settings → Integrations → Claude & AI Assistants)",
           "isRequired": true,
           "isSecret": true
         }
