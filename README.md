@@ -2,7 +2,7 @@
 
 A hosted [Model Context Protocol](https://modelcontextprotocol.io) server that gives AI agents full access to **Nynch** — a relationship-led growth platform for consultants and professional services firms.
 
-**42 tools** across 4 categories: CRM, pipeline management, relationship intelligence, and multi-agent orchestration.
+**46 tools** across 5 categories: CRM read, CRM write, relationship intelligence, context query, and multi-agent orchestration.
 
 ## Endpoint
 
@@ -10,13 +10,13 @@ A hosted [Model Context Protocol](https://modelcontextprotocol.io) server that g
 https://crcrwtjzqzinfzokianr.supabase.co/functions/v1/mcp-server
 ```
 
-**Transport:** JSON-RPC 2.0 over Streamable HTTP + GET `/sse` for real-time subscriptions.
+**Transport:** JSON-RPC 2.0 over Streamable HTTP. The server is stateless (no session to manage) and negotiates the protocol version with your client — it speaks `2025-11-25`, `2025-06-18`, and `2025-03-26`.
 
 ## Quick Start
 
 ### 1. Get an API Key
 
-Sign up at [nynch.com](https://nynch.com), then go to **Settings → MCP Server** and create an API key.
+Sign up at [nynch.com](https://nynch.com), then go to **Settings → Integrations → Claude & AI Assistants** and create an API key.
 
 **Scopes:**
 - `read` — Search, browse, and retrieve data
@@ -141,6 +141,18 @@ Your AI client discovers available tools automatically. Ask it to search contact
 | `create_handoff` | Request another agent to perform a task |
 | `get_handoffs` | Get pending handoffs for your agent |
 | `complete_handoff` | Mark a handoff as completed or failed |
+
+### Context Query (5 tools)
+
+Discover and read bounded slices of Nynch and connected-app context, metadata-first. Read-only — never accepts raw SQL.
+
+| Tool | Description |
+|------|-------------|
+| `list_context_sources` | List safe read-only context sources available to you |
+| `search_context_sources` | Search context sources by natural-language keyword (metadata only) |
+| `describe_context_source` | Describe one source: purpose, columns, filters, limits, availability |
+| `list_context_columns` | List selectable columns and allowed filters for one source |
+| `query_context` | Read a bounded slice from one source via a constrained query object |
 
 ## MCP Resources
 
