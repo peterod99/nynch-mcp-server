@@ -2,7 +2,7 @@
 
 A hosted [Model Context Protocol](https://modelcontextprotocol.io) server that gives AI agents full access to **Nynch** — a relationship-led growth platform for consultants and professional services firms.
 
-**46 tools** across 5 categories: CRM read, CRM write, relationship intelligence, context query, and multi-agent orchestration.
+**47 tools** across 5 categories: CRM read, CRM write, relationship intelligence, context query, and multi-agent orchestration.
 
 ## Endpoint
 
@@ -81,7 +81,7 @@ Your AI client discovers available tools automatically. Ask it to search contact
 
 ## Tool Catalog
 
-### CRM Read (10 tools)
+### CRM Read (11 tools)
 
 | Tool | Description |
 |------|-------------|
@@ -92,6 +92,7 @@ Your AI client discovers available tools automatically. Ask it to search contact
 | `search_deals_by_inactivity` | Find stalled deals with no recent activity |
 | `get_pipeline_summary` | Pipeline health: stage distribution, at-risk deals, upcoming closes |
 | `get_next_best_actions` | AI-powered recommendations for what to do next |
+| `get_who_list` | People to reach now, including identified site visitors. Never mention a specific page in outreach |
 | `list_buckets` | List all buckets (lists/segments) |
 | `get_bucket_contacts` | Get contacts in a specific bucket |
 | `get_bucket_game_queue` | Get contacts waiting to be sorted into buckets |
@@ -120,7 +121,7 @@ Your AI client discovers available tools automatically. Ask it to search contact
 | `get_authority_score` | Authority score across 6 dimensions |
 | `get_commitments` | Commitments with Say/Do tracking and due dates |
 | `get_buying_committee` | Stakeholder map: roles, influence, sentiment |
-| `get_contact_signals` | Job changes, company changes, buying intent signals |
+| `get_contact_signals` | Job changes, company changes, buying intent, identified website visits (no page paths) |
 | `get_interaction_history` | Full interaction timeline with direction and sentiment |
 | `get_relationship_score` | 5-factor relationship strength score |
 | `export_context_briefing` | AI-ready context briefing for any contact or deal |
