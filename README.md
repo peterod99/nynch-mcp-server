@@ -1,31 +1,41 @@
 # Nynch MCP Server
 
-A hosted [Model Context Protocol](https://modelcontextprotocol.io) server that gives AI agents full access to **Nynch** — a relationship-led growth platform for consultants and professional services firms.
+**Website:** [www.nynch.com](https://www.nynch.com) · **Developer docs:** [www.nynch.com/developers](https://www.nynch.com/developers) · **Endpoint:** `https://app.nynch.com/mcp`
 
-**47 tools** across 5 categories: CRM read, CRM write, relationship intelligence, context query, and multi-agent orchestration.
+The official, hosted [Model Context Protocol](https://modelcontextprotocol.io) server for [Nynch](https://www.nynch.com), the AI CRM for consultants and fractionals who win high-value deals based on relationships.
+
+**50 tools** across 6 categories: CRM read, CRM write, relationship intelligence, firm intelligence, context query, and multi-agent orchestration.
 
 ## Endpoint
 
 ```
-https://crcrwtjzqzinfzokianr.supabase.co/functions/v1/mcp-server
+https://app.nynch.com/mcp
 ```
 
 **Transport:** JSON-RPC 2.0 over Streamable HTTP. The server is stateless (no session to manage) and negotiates the protocol version with your client — it speaks `2025-11-25`, `2025-06-18`, and `2025-03-26`.
 
+> The older endpoint `https://crcrwtjzqzinfzokianr.supabase.co/functions/v1/mcp-server` still answers, but it is deprecated. Use `https://app.nynch.com/mcp` in new configs.
+
 ## Quick Start
 
-### 1. Get an API Key
+### Claude (custom connector, OAuth, no API key)
 
-Sign up at [nynch.com](https://nynch.com), then go to **Settings → Integrations → Claude & AI Assistants** and create an API key.
+In Claude, open **Settings → Connectors → Add custom connector** and enter `https://app.nynch.com/mcp`. Click **Connect**, sign in with your Nynch account and approve access. Revoke access any time in Nynch under **Settings → Integrations → AI hosts**.
+
+### Other MCP clients (API key)
+
+#### 1. Get an API Key
+
+Sign up at [www.nynch.com](https://www.nynch.com), then go to **Settings → Integrations → Claude & AI Assistants** and create an API key.
 
 **Scopes:**
 - `read` — Search, browse, and retrieve data
 - `read-write` — Read + create, update, delete records
 - `admin` — Full access including agent orchestration
 
-### 2. Configure Your Client
+#### 2. Configure Your Client
 
-#### Claude Desktop
+##### Claude Desktop
 
 Add to `claude_desktop_config.json`:
 
@@ -33,7 +43,7 @@ Add to `claude_desktop_config.json`:
 {
   "mcpServers": {
     "nynch": {
-      "url": "https://crcrwtjzqzinfzokianr.supabase.co/functions/v1/mcp-server",
+      "url": "https://app.nynch.com/mcp",
       "headers": {
         "Authorization": "Bearer YOUR_API_KEY"
       }
@@ -42,7 +52,7 @@ Add to `claude_desktop_config.json`:
 }
 ```
 
-#### Cursor
+##### Cursor
 
 Add to `.cursor/mcp.json`:
 
@@ -50,7 +60,7 @@ Add to `.cursor/mcp.json`:
 {
   "mcpServers": {
     "nynch": {
-      "url": "https://crcrwtjzqzinfzokianr.supabase.co/functions/v1/mcp-server",
+      "url": "https://app.nynch.com/mcp",
       "headers": {
         "Authorization": "Bearer YOUR_API_KEY"
       }
@@ -59,14 +69,14 @@ Add to `.cursor/mcp.json`:
 }
 ```
 
-#### Python (MCP SDK)
+##### Python (MCP SDK)
 
 ```python
 from mcp import ClientSession
 from mcp.client.streamable_http import streamablehttp_client
 
 async with streamablehttp_client(
-    "https://crcrwtjzqzinfzokianr.supabase.co/functions/v1/mcp-server",
+    "https://app.nynch.com/mcp",
     headers={"Authorization": "Bearer YOUR_API_KEY"}
 ) as (read, write, _):
     async with ClientSession(read, write) as session:
@@ -75,7 +85,7 @@ async with streamablehttp_client(
         print(result)
 ```
 
-### 3. Start Using Tools
+#### 3. Start Using Tools
 
 Your AI client discovers available tools automatically. Ask it to search contacts, check your pipeline, create tasks, or analyze relationships.
 
@@ -130,6 +140,14 @@ Your AI client discovers available tools automatically. Ask it to search contact
 | `get_deal_intelligence` | Deal health: velocity, stakeholder coverage, risk factors |
 | `get_weekly_briefing` | Weekly summary: interactions, changes, recommendations |
 
+### Firm Intelligence (3 tools)
+
+| Tool | Description |
+|------|-------------|
+| `get_firm_warm_paths` | Who at your firm knows this person or company, ranked by relationship strength. Metadata only, never email content |
+| `find_firm_reachable_people` | People you can reach through a teammate, strongest path first, with the best teammate to ask for an intro |
+| `get_firm_client_outcomes` | Client work the firm has won: value, retainer, owner, primary contact, referrer, totals by currency |
+
 ### Agent Orchestration (8 tools)
 
 | Tool | Description |
@@ -178,11 +196,13 @@ Nynch supports multi-agent workflows where AI agents register, share context, an
 
 ## Documentation
 
-Full developer documentation: [nynch.com/developers](https://nynch.com/developers)
+- Developer docs: [www.nynch.com/developers](https://www.nynch.com/developers)
+- MCP discovery: [www.nynch.com/.well-known/mcp](https://www.nynch.com/.well-known/mcp)
+- OpenAPI: [www.nynch.com/openapi.json](https://www.nynch.com/openapi.json)
 
 ## About Nynch
 
-[Nynch](https://nynch.com) is a relationship-led growth platform that helps consultants and professional services firms turn relationships into revenue. It combines CRM, relationship intelligence, and AI-powered coaching into a single platform.
+[Nynch](https://www.nynch.com) is the AI CRM for consultants and fractionals who win high-value deals based on relationships. It remembers relationship context across email, meetings and LinkedIn, and surfaces it when a conversation is worth having.
 
 ## License
 
