@@ -1,21 +1,28 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "io.github.peterod99/nynch",
-  "title": "Nynch MCP Server",
-  "description": "CRM, relationship intelligence, and multi-agent orchestration for AI agents.",
+  "title": "Nynch",
+  "description": "Nynch, the AI CRM for consultants and fractionals: contacts, deals and relationship intelligence.",
+  "websiteUrl": "https://www.nynch.com",
+  "icons": [
+    {
+      "src": "https://www.nynch.com/favicon.png",
+      "mimeType": "image/png"
+    }
+  ],
   "repository": {
     "url": "https://github.com/peterod99/nynch-mcp-server",
     "source": "github"
   },
-  "version": "3.0.0",
+  "version": "3.1.0",
   "remotes": [
     {
       "type": "streamable-http",
-      "url": "https://crcrwtjzqzinfzokianr.supabase.co/functions/v1/mcp-server",
+      "url": "https://app.nynch.com/mcp",
       "headers": [
         {
           "name": "Authorization",
-          "description": "Bearer token — use your Nynch MCP API key (create one in Settings → Integrations → Claude & AI Assistants)",
+          "description": "Bearer <your Nynch MCP API key>. Create one in Nynch: Settings > Integrations > Claude & AI Assistants. Docs: https://www.nynch.com/developers",
           "isRequired": true,
           "isSecret": true
         }

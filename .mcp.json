@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "nynch": {
+      "url": "https://app.nynch.com/mcp",
+      "headers": {
+        "Authorization": "Bearer ${NYNCH_API_KEY}"
+      }
+    }
+  }
+}
